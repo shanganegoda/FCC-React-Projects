@@ -1,0 +1,13 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    background: lawngreen;
+}
+
+.buttons {
+    display: flex;
+    gap: 3rem;
+}
