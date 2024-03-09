@@ -8,17 +8,21 @@ export default function RandomColour() {
 
     const changeRGBColor = () => {
         setIsRGB(true);
-        let r = Math.floor(Math.random() * 1000) % 255
-        let g = Math.floor(Math.random() * 1000) % 255
-        let b = Math.floor(Math.random() * 1000) % 255
+        let r = Math.floor(Math.random() * 256)
+        let g = Math.floor(Math.random() * 256)
+        let b = Math.floor(Math.random() * 256)
         let new_color = `rgb(${r},${g},${b})`;
         setColor(new_color)
     }
 
     const changeHexColor = () => {
         setIsRGB(false);
-        let hex_num = Math.floor(Math.random() * 1000000);
-        let hex_color = `#${hex_num}`;
+        const hex_arr = ['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+        let hex_color = "#"
+
+        for(let i =0 ; i<6 ; i++) {
+            hex_color += hex_arr[Math.floor(Math.random() * hex_arr.length)]
+        }
         setColor(hex_color)
     }
 

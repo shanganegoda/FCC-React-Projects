@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Accordian from './components/Accordian'
-import RandomColour from './components/Accordian/RandomColour'
+import ImageSlider from './components/ImageSlider/ImageSlider'
+import RandomColour from './components/RandomColour'
+import StarRating from './components/StarRating'
 
 function App() {
 
@@ -11,7 +10,12 @@ function App() {
     <>
       <div className='app__main'>
         <Accordian />
+        <hr style={{ borderTop: '1px solid black' , width : '100vw' } }/>
         <RandomColour/>
+        <hr style={{ borderTop: '1px solid black' , width : '100vw' } }/>
+        <StarRating/>
+        <hr style={{ borderTop: '1px solid black' , width : '100vw' } }/>
+        <ImageSlider url="https://picsum.photos/v2/list"/>
       </div>
     </>
   )
