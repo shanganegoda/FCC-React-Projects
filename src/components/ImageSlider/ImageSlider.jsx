@@ -22,7 +22,6 @@ export default function ImageSlider({ url, page = 1, limit = 10 }) {
         try {
             const response = await fetch(url);
             const data = await response.json()
-            console.log("Data", data);
             return data;
         } catch (error) {
             console.log(error)
@@ -30,11 +29,15 @@ export default function ImageSlider({ url, page = 1, limit = 10 }) {
     }
 
     function handlePrevious() {
-        setCurrentImage((prevImage) => prevImage === 0 ? images.length - 1 : prevImage - 1)
+        setCurrentImage((prevImage) => prevImage === 0 ? images.length - 1 : prevImage - 1);
     }
 
     function handleNext() {
-        setCurrentImage((prevImage) => prevImage === images.length - 1 ? 0 : prevImage + 1)
+        setCurrentImage((prevImage) => prevImage === images.length - 1 ? 0 : prevImage + 1);
+    }
+
+    function handleIndicatorSelect(index) {
+        setCurrentImage(index);
     }
 
     return (
@@ -44,17 +47,17 @@ export default function ImageSlider({ url, page = 1, limit = 10 }) {
                 {
                     images && images.length !== 0 ?
                         images.map((img, index) =>
-                        // (currentImage == index) && 
+                        (currentImage == index) && 
                         (<img
                             key={index}
-                            className={currentImage === index ? "current-image" : "hide-current-image"}
+                            className="current-image"
                             src={img.download_url}></img>)
                         ) : <p>Loading</p>}
                 <BsArrowRightCircleFill className="arrow arrow-right" onClick={handleNext} />
                 <span className="circle-indicators">
                     {
                         images && images.length ?
-                            images.map((_, index) => <button key={index} className={currentImage === index ? "current-indicator" : "current-indicator inactive-indicator"}></button>) : null
+                            images.map((_, index) => <button key={index} onClick={() => handleIndicatorSelect(index)} className={currentImage === index ? "current-indicator" : "current-indicator inactive-indicator"}></button>) : null
                     }
                 </span>
             </div>
